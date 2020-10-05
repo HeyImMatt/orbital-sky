@@ -1,4 +1,3 @@
-"""Makes a call using sat name and returns the wiki page content"""
 
 from flask import Flask
 import requests
@@ -20,7 +19,7 @@ FORMAT_PARAMETERS_WIKITEXT = "&format=json&prop=wikitext&formatversion=2"
 
 def call_wikitext(search_term):
     """Returns response in WikiText format. If response is error, returns list of USA Satellites"""
-    resp = requests.get(f"{WIKI_BASE_URL}{search_term}{FORMAT_PARAMETERS_WIKITEXT}").json()
+    resp = requests.get(f"{WIKI_BASE_URL}{search_term}{FORMAT_PARAMETERS_HTML}").json()
     if "error" in resp:
         try:
             search=parse_for_sat(search_term)
